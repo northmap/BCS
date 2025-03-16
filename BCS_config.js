@@ -4,7 +4,7 @@ const config = {
     accessToken: "pk.eyJ1IjoiamJhbWZvcmQiLCJhIjoia0dZNENUMCJ9._cSAJxiTZhfdH6F1LhxnVw",
     CSV: "BCS.csv",
     center: [-6.877, 55.134], //Lng, Lat
-    zoom: 12.7, //Default zoom
+    zoom: 11.40, //Default zoom
     pitch: 5,
    
     title: "",
