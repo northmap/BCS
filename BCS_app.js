@@ -486,20 +486,20 @@ map.on("load", function () {
                 
                 // Default radius value if no match
                 5  
+            ],
+        
+            // Circle color
+            "circle-color": [
+                "match",
+                ["get", "Theme"],
+                "NI Sites and Monuments Record", "hsl(2, 63%, 49%)",
+                "Historic Environment Projects", "hsl(107, 82%, 43%)",
+                "Volunteer Survey Data", "hsl(175, 92%, 51%)",
+                // Default color if no match
+                "#000000"
             ]
         }
-            // size of circles
-            "circle-color": [
-              "match",
-              ["get", "Theme"],
-              ["NI Sites and Monuments Record"],
-              "hsl(2, 63%, 49%)",
-              ["Historic Environment Projects"],
-              "hsl(107, 82%, 43%)",
-              ["Volunteer Survey Data"],
-              "hsl(175, 92%, 51%)",
-              "#000000",
-            ], // color of circles
+        , // color of circles
             "circle-stroke-color": "hsl(298, 3%, 100%)",
             "circle-stroke-width": [
               "interpolate",
