@@ -457,8 +457,8 @@ map.on("load", function () {
     csv2geojson.csv2geojson(
       csvData,
       {
-        latfield: "Latitude",
-        lonfield: "Longitude",
+        latfield: "Lat",
+        lonfield: "Long",
         delimiter: ",",
       },
       function (err, data) {
