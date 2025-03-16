@@ -1,6 +1,6 @@
 
 const config = {
-    style: "mapbox://styles/jbamford/cl7ylpomb007715qotuwdm3gy",
+    style: "mapbox://styles/jbamford/cm335hqg4010l01o015fb9dr7",
     accessToken: "pk.eyJ1IjoiamJhbWZvcmQiLCJhIjoia0dZNENUMCJ9._cSAJxiTZhfdH6F1LhxnVw",
     CSV: "BCS.csv",
     center: [-6.438,55.233], //Lng, Lat
