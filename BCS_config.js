@@ -3,7 +3,7 @@ const config = {
     style: "mapbox://styles/jbamford/cm335hqg4010l01o015fb9dr7",
     accessToken: "pk.eyJ1IjoiamJhbWZvcmQiLCJhIjoia0dZNENUMCJ9._cSAJxiTZhfdH6F1LhxnVw",
     CSV: "BCS.csv",
-    center: [-6.438,55.233], //Lng, Lat
+    center: [-6.877, 55.134], //Lng, Lat
     zoom: 12.7, //Default zoom
     pitch: 5,
    
