@@ -477,26 +477,34 @@ map.on("load", function () {
           },
           paint: {
             "circle-radius": [
-                "case",
-                ["==", ["get", "Theme"], "NI Sites and Monuments Record"],
-                ["interpolate", ["exponential", 0.51], ["zoom"], 10.5, 1, 11, 2], 
-                
-                ["==", ["get", "Theme"], "Historic Environment Projects"],
-                ["interpolate", ["linear"], ["zoom"], 12, 12, 15.5, 16], 
-                
-                // Default radius value if no match
-                5  
-            ],
-        
-            // Circle color
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12.5,
+              3,
+              15,
+              6.5,
+            ], // size of circles
             "circle-color": [
-                "match",
-                ["get", "Theme"],
-                "NI Sites and Monuments Record", "hsl(2, 63%, 49%)",
-                "Historic Environment Projects", "hsl(107, 82%, 43%)",
-                "Volunteer Survey Data", "hsl(175, 92%, 51%)",
-                // Default color if no match
-                "#000000"
+              "match",
+              ["get", "Theme"],
+              ["NI Sites and Monuments Record"],
+              "hsl(196, 58%, 61%)",
+              ["Historic Environment Projects"],
+              "hsl(0, 83%, 64%)",
+              ["Volunteer Survey Data"],
+              "hsl(288, 68%, 68%)",
+              "#000000",
+            ], // color of circles
+            "circle-stroke-color": "hsl(298, 3%, 100%)",
+            "circle-stroke-width": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12.5,
+              1.5,
+              15,
+              3,
             ],
 
             "circle-opacity": 1,
