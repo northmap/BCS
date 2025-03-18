@@ -486,13 +486,13 @@ map.on("load", function () {
               ["zoom"],
               12, 5, 15.5, 7
             ],
-            "circle-color": "hsl(0, 83%, 64%)",
+            "circle-color": "hsl(107, 90%, 42%)",
             "circle-stroke-color": "hsl(298, 3%, 100%)",
             "circle-stroke-width": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              12.5, 1.5, 15, 3,
+              12, 1, 14.5, 3,
             ],
             "circle-opacity": 1,
           }
@@ -516,13 +516,13 @@ map.on("load", function () {
               ["zoom"],
               12, 2.5, 15.5, 5
             ],
-            "circle-color": "hsl(196, 58%, 61%)",
+            "circle-color": "hsl(2, 63%, 49%)",
             "circle-stroke-color": "hsl(298, 3%, 100%)",
             "circle-stroke-width": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              12.5, 1.5, 15, 3,
+              12, 1, 15, 1.5,
             ],
             "circle-opacity": 1,
           },
@@ -547,19 +547,19 @@ map.on("load", function () {
               ["zoom"],
               12, 5, 15.5, 7
             ],
-            "circle-color": "hsl(288, 68%, 68%)",
+            "circle-color": "hsl(167, 74%, 45%)",
             "circle-stroke-color": "hsl(298, 3%, 100%)",
             "circle-stroke-width": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              12.5, 1.5, 15, 3,
+              12, 2, 14.5, 5,
             ],
             "circle-opacity": 1,
           },
           before: "ni-sites-and-monuments-record" // Ensures this layer is above the previous one
         });
-        
+
         map.addLayer({
           id: "text",
           type: "symbol",
