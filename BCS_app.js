@@ -478,25 +478,36 @@ map.on("load", function () {
           paint: {
             "circle-radius": [
               "interpolate",
-              ["exponential", 0.51],
+              ["linear"],
               ["zoom"],
-              12,
+              12.5,
               3,
-              14.4,
-              5
+              15,
+              6.5,
             ], // size of circles
-            "circle-color": "hsl(2, 63%, 49%)", // color of circles
-            "circle-stroke-color": "hsl(0, 1%, 98%)",
+            "circle-color": [
+              "match",
+              ["get", "Theme"],
+              ["NI Sites and Monuments Record"],
+              "hsl(196, 58%, 61%)",
+              ["Historic Environment Projects"],
+              "hsl(0, 83%, 64%)",
+              ["Volunteer Survey Data"],
+              "hsl(288, 68%, 68%)",
+              "#000000",
+            ], // color of circles
+            "circle-stroke-color": "hsl(298, 3%, 100%)",
             "circle-stroke-width": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              12,
-              1,
-              14.4,
-              3
+              12.5,
+              1.5,
+              15,
+              3,
             ],
-            "circle-opacity": 1
+
+            "circle-opacity": 1,
           },
         });
 
@@ -508,15 +519,15 @@ map.on("load", function () {
             data: geojsonData,
           },
           layout: {
-            "text-field": "{Title/Name}",
+            "text-field": "{Title/name}",
             "text-size": [
               "interpolate",
               ["linear"],
               ["zoom"],
+              12.5,
               12,
-              12,
-              15.5,
-              16
+              15,
+              15,
             ],
             "text-offset": [
               "interpolate",
@@ -525,7 +536,7 @@ map.on("load", function () {
               12,
               ["literal", [0, 0.5]],
               15,
-              ["literal", [0, 1.3]]
+              ["literal", [0, 1.3]],
             ],
             "text-justify": "center",
             "text-padding": 0.5,
@@ -534,26 +545,28 @@ map.on("load", function () {
           },
           paint: {
             "text-opacity": 1,
-            "text-color": "hsl(2, 63%, 49%)",
+            "text-color": [
+              "match",
+              ["get", "Theme"],
+              ["NI Sites and Monuments Record"],
+              "hsl(196, 24%, 35%)",
+              ["Historic Environment Projects"],
+              "hsl(0, 57%, 61%)",
+              ["Volunteer Survey Data"],
+              "hsl(288, 32%, 51%)",
+              "#000000",
+            ],
             "text-halo-width": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              12,
+              12.5,
               1,
               15,
-              1.5
+              2,
             ],
             "text-halo-color": "hsl(0, 100%, 99%)",
-            "text-halo-blur": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              12,
-              0,
-              15,
-              0.5
-            ],
+            "text-halo-blur": 0.2,
           },
         });
       }
