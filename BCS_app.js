@@ -465,9 +465,10 @@ map.on("load", function () {
         data.features.forEach(function (data, i) {
           data.properties.id = i;
         });
-
+  
         geojsonData = data;
-        // Add the the layer to the map
+  
+        // Add layer for "Historic Environment Projects" (lowest level)
         map.addLayer({
           id: "historic-environment-projects",
           type: "circle",
@@ -479,12 +480,25 @@ map.on("load", function () {
             }
           },
           paint: {
-            "circle-radius": 14,
-            "circle-color": "hsl(0, 83%, 64%)"
+            "circle-radius": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12, 5, 15.5, 7
+            ],
+            "circle-color": "hsl(0, 83%, 64%)",
+            "circle-stroke-color": "hsl(298, 3%, 100%)",
+            "circle-stroke-width": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12.5, 1.5, 15, 3,
+            ],
+            "circle-opacity": 1,
           }
         });
-        
-        // Step 3: Add layer for "NI Sites and Monuments Record" (middle level)
+  
+        // Add layer for "NI Sites and Monuments Record" (middle level)
         map.addLayer({
           id: "ni-sites-and-monuments-record",
           type: "circle",
@@ -496,13 +510,26 @@ map.on("load", function () {
             }
           },
           paint: {
-            "circle-radius": 16,
-            "circle-color": "hsl(196, 58%, 61%)"
+            "circle-radius": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12, 2.5, 15.5, 5
+            ],
+            "circle-color": "hsl(196, 58%, 61%)",
+            "circle-stroke-color": "hsl(298, 3%, 100%)",
+            "circle-stroke-width": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12.5, 1.5, 15, 3,
+            ],
+            "circle-opacity": 1,
           },
           before: "historic-environment-projects" // Ensures this layer is above the previous one
         });
-        
-        // Step 4: Add layer for "Volunteer Survey Data" (top level)
+  
+        // Add layer for "Volunteer Survey Data" (top level)
         map.addLayer({
           id: "volunteer-survey-data",
           type: "circle",
@@ -514,61 +541,28 @@ map.on("load", function () {
             }
           },
           paint: {
-            "circle-radius": 18,
-            "circle-color": "hsl(288, 68%, 68%)"
-          },
-          before: "ni-sites-and-monuments-record" // Ensures this layer is above the previous one
-        });
-          paint: {
             "circle-radius": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-  
-  // Zoom 12
-            12, [
-            "case",
-            ["==", ["get", "Theme"], "Historic Environment Projects"], 5,
-            ["==", ["get", "Theme"], "Volunteer Survey Data"], 5,
-            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 2.5,
-            5
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12, 5, 15.5, 7
             ],
-
-  // Zoom 15.5
-            14.5, [
-            "case",
-            ["==", ["get", "Theme"], "Historic Environment Projects"], 7,
-            ["==", ["get", "Theme"], "Volunteer Survey Data"], 7,
-            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 5,
-            5
-            ]
-            ], // size of circles
-            "circle-color": [
-              "match",
-              ["get", "Theme"],
-              ["Historic Environment Projects"],
-              "hsl(107, 90%, 42%)",
-              ["Volunteer Survey Data"],
-              "hsl(167, 74%, 45%)",
-              ["NI Sites and Monuments Record"],
-              "hsl(2, 63%, 49%)",
-              "#000000",
-            ], // color of circles
+            "circle-color": "hsl(288, 68%, 68%)",
             "circle-stroke-color": "hsl(298, 3%, 100%)",
             "circle-stroke-width": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              12.5,
-              1.5,
-              15,
-              3,
+              12.5, 1.5, 15, 3,
             ],
-
             "circle-opacity": 1,
           },
+          before: "ni-sites-and-monuments-record" // Ensures this layer is above the previous one
         });
-
+      }
+    );
+  }
+  
         map.addLayer({
           id: "text",
           type: "symbol",
