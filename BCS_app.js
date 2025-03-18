@@ -8,7 +8,7 @@ const filteredGeojson = {
 };
 var bounds = [
   [-7.065, 54.997], // Southwest coordinates
-  [-6.567, 55.180], // Northeast coordinates
+  [-6.664, 55.326], // Northeast coordinates
 ];
 const map = new mapboxgl.Map({
   container: "map",
