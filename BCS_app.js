@@ -465,10 +465,9 @@ map.on("load", function () {
         data.features.forEach(function (data, i) {
           data.properties.id = i;
         });
-  
+
         geojsonData = data;
-  
-        // Add layer for "Historic Environment Projects" (lowest level)
+        // Add the the layer to the map
         map.addLayer({
           id: "locationData",
           type: "circle",
@@ -478,24 +477,53 @@ map.on("load", function () {
           },
           paint: {
             "circle-radius": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              12.5,
-              3,
-              15,
-              6.5,
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+  
+  // Zoom 12
+            12, [
+            "case",
+            ["==", ["get", "Theme"], "Historic Environment Projects"], 5,
+            ["==", ["get", "Theme"], "Volunteer Survey Data"], 5,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 2.5,
+            5
+            ],
+
+  // Zoom 15.5
+            14.5, [
+            "case",
+            ["==", ["get", "Theme"], "Historic Environment Projects"], 7,
+            ["==", ["get", "Theme"], "Volunteer Survey Data"], 7,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 5,
+            5
+            ]
             ], // size of circles
             "circle-color": [
               "match",
               ["get", "Theme"],
               ["Historic Environment Projects"],
-              "hsl(196, 58%, 61%)",
+              "hsl(107, 90%, 42%)",
               ["Volunteer Survey Data"],
-              "hsl(0, 83%, 64%)",
+              "hsl(167, 74%, 45%)",
               ["NI Sites and Monuments Record"],
-              "hsl(288, 68%, 68%)",
+              "hsl(2, 63%, 49%)",
               "#000000",
+            ], // color of circles
+            "circle-stroke-color": "hsl(298, 3%, 100%)",
+            "circle-stroke-width": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12.5,
+              1.5,
+              15,
+              3,
+            ],
+
+            "circle-opacity": 1,
+          },
+        });
 
         map.addLayer({
           id: "text",
