@@ -559,10 +559,7 @@ map.on("load", function () {
           },
           before: "ni-sites-and-monuments-record" // Ensures this layer is above the previous one
         });
-      }
-    );
-  }
-  
+        
         map.addLayer({
           id: "text",
           type: "symbol",
