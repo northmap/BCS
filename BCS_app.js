@@ -519,7 +519,7 @@ map.on("load", function () {
             data: geojsonData,
           },
           layout: {
-            "text-field": "{Title/name}",
+            "text-field": "{Title/Name}",
             "text-size": [
               "interpolate",
               ["linear"],
