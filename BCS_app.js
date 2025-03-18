@@ -478,12 +478,12 @@ map.on("load", function () {
           paint: {
             "circle-radius": [
               "match",
+              "default": 2,
               ["get", "Theme"],
               "NI Sites and Monuments Record", ["interpolate", ["linear"], ["zoom"], 12, 3, 15, 6.5],
               "Historic Environment Projects", ["interpolate", ["linear"], ["zoom"], 12, 3, 15, 6.5],
               "Volunteer Survey Data", ["interpolate", ["linear"], ["zoom"], 12, 3, 15, 6.5],
-  5
-], // size of circles
+            ], // size of circles
             "circle-color": [
               "match",
               ["get", "Theme"],
