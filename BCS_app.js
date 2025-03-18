@@ -481,21 +481,21 @@ map.on("load", function () {
             ["linear"],
             ["zoom"],
   
-  // Zoom 12
-            12, [
+  // Zoom 11.2
+            11.2, [
             "case",
-            ["==", ["get", "Theme"], "Historic Environment Projects"], 5,
-            ["==", ["get", "Theme"], "Volunteer Survey Data"], 5,
-            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 2.5,
+            ["==", ["get", "Theme"], "Historic Environment Projects"], 2,
+            ["==", ["get", "Theme"], "Volunteer Survey Data"], 2,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 1,
             5
             ],
 
-  // Zoom 15.5
-            14.5, [
+  // Zoom 14
+            14, [
             "case",
-            ["==", ["get", "Theme"], "Historic Environment Projects"], 7,
-            ["==", ["get", "Theme"], "Volunteer Survey Data"], 7,
-            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 3,
+            ["==", ["get", "Theme"], "Historic Environment Projects"], 3,
+            ["==", ["get", "Theme"], "Volunteer Survey Data"], 3,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 1.5,
             5
             ]
             ], // size of circles
@@ -515,12 +515,24 @@ map.on("load", function () {
               "interpolate",
               ["linear"],
               ["zoom"],
-              12.5,
-              1.5,
-              15,
-              3,
+  // Zoom 12
+            12, [
+            "case",
+            ["==", ["get", "Theme"], "Historic Environment Projects"], 5,
+            ["==", ["get", "Theme"], "Volunteer Survey Data"], 5,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 2.5,
+            5
             ],
 
+// Zoom 15.5
+            14.5, [
+            "case",
+            ["==", ["get", "Theme"], "Historic Environment Projects"], 7,
+            ["==", ["get", "Theme"], "Volunteer Survey Data"], 7,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 3,
+            5
+            ]
+            ],
             "circle-opacity": 1,
           },
         });
