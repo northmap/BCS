@@ -484,18 +484,18 @@ map.on("load", function () {
   // Zoom 12
             12, [
             "case",
-            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 10,
-            ["==", ["get", "Theme"], "Historic Environment Projects"], 12,
-            ["==", ["get", "Theme"], "Volunteer Survey Data"], 12,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 3,
+            ["==", ["get", "Theme"], "Historic Environment Projects"], 5,
+            ["==", ["get", "Theme"], "Volunteer Survey Data"], 5,
             5
             ],
 
   // Zoom 15.5
-            15.5, [
+            13.5, [
             "case",
-            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 16,
-            ["==", ["get", "Theme"], "Historic Environment Projects"], 16,
-            ["==", ["get", "Theme"], "Volunteer Survey Data"], 18,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 5,
+            ["==", ["get", "Theme"], "Historic Environment Projects"], 7,
+            ["==", ["get", "Theme"], "Volunteer Survey Data"], 7,
             5
             ]
             ], // size of circles
