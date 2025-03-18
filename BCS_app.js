@@ -654,7 +654,7 @@ exitButton.addEventListener("click", () => {
   modal.classList.add("hide-visually");
 });
 
-const title = document.getElementById("title");
+const title = document.getElementById("Title/Name");
 title.innerText = config.title;
 
 map.addControl(new mapboxgl.NavigationControl());
