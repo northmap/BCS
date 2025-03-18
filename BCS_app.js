@@ -476,20 +476,14 @@ map.on("load", function () {
             data: geojsonData,
           },
           paint: {
-            // Correct circle-radius using "case" instead of "match"
             "circle-radius": [
-              "case",
-              ["==", ["get", "Theme"], "NI Sites and Monuments Record"],
-              ["interpolate", ["linear"], ["zoom"], 0, 10, 20, 16],
-          
-              ["==", ["get", "Theme"], "Historic Environment Projects"],
-              ["interpolate", ["linear"], ["zoom"], 0, 10, 20, 16],
-          
-              ["==", ["get", "Theme"], "Volunteer Survey Data"],
-              ["interpolate", ["linear"], ["zoom"], 0, 10, 20, 16],
-          
-              // Default radius if no match
-              5
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12.5,
+              3,
+              15,
+              6.5,
             ], // size of circles
             "circle-color": [
               "match",
