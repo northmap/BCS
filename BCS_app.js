@@ -560,62 +560,6 @@ map.on("load", function () {
           before: "ni-sites-and-monuments-record" // Ensures this layer is above the previous one
         });
 
-        map.addLayer({
-          id: "text",
-          type: "symbol",
-          source: {
-            type: "geojson",
-            data: geojsonData,
-          },
-          layout: {
-            "text-field": "{Title/Name}",
-            "text-size": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              12,
-              12,
-              15.5,
-              16
-            ],
-            "text-offset": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              12,
-              ["literal", [0, 0.5]],
-              15,
-              ["literal", [0, 1.3]]
-            ],
-            "text-justify": "center",
-            "text-padding": 0.5,
-            "text-anchor": "top",
-            "text-font": ["Brandon Text Medium", "Arial Unicode MS Regular"],
-          },
-          paint: {
-            "text-opacity": 1,
-            "text-color": "hsl(2, 63%, 49%)",
-            "text-halo-width": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              12,
-              1,
-              15,
-              1.5
-            ],
-            "text-halo-color": "hsl(0, 100%, 99%)",
-            "text-halo-blur": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              12,
-              0,
-              15,
-              0.5
-            ],
-          },
-        });
       }
     );
 
