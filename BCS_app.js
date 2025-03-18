@@ -484,14 +484,14 @@ map.on("load", function () {
   // Zoom 12
             12, [
             "case",
-            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 3,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 2.5,
             ["==", ["get", "Theme"], "Historic Environment Projects"], 5,
             ["==", ["get", "Theme"], "Volunteer Survey Data"], 5,
             5
             ],
 
   // Zoom 15.5
-            13.5, [
+            14.5, [
             "case",
             ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 5,
             ["==", ["get", "Theme"], "Historic Environment Projects"], 7,
@@ -503,11 +503,11 @@ map.on("load", function () {
               "match",
               ["get", "Theme"],
               ["NI Sites and Monuments Record"],
-              "hsl(196, 58%, 61%)",
+              "hsl(2, 63%, 49%)",
               ["Historic Environment Projects"],
-              "hsl(0, 83%, 64%)",
+              "hsl(107, 90%, 42%)",
               ["Volunteer Survey Data"],
-              "hsl(288, 68%, 68%)",
+              "hsl(167, 74%, 45%)",
               "#000000",
             ], // color of circles
             "circle-stroke-color": "hsl(298, 3%, 100%)",
@@ -548,26 +548,48 @@ map.on("load", function () {
               ["linear"],
               ["zoom"],
               12,
-              ["literal", [0, 0.5]],
-              15,
-              ["literal", [0, 1.3]],
+              ["literal", [0.2, -0.5]],
+              14,
+              ["literal", [1, -1]]
             ],
             "text-justify": "center",
             "text-padding": 0.5,
-            "text-anchor": "top",
+            "text-anchor": "bottom-left",
             "text-font": ["Brandon Text Medium", "Arial Unicode MS Regular"],
           },
           paint: {
-            "text-opacity": 1,
+            "text-opacity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+    
+    // Zoom 12.5
+              12.5, [
+              "case",
+              ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 0,
+              ["==", ["get", "Theme"], "Historic Environment Projects"], 1,
+              ["==", ["get", "Theme"], "Volunteer Survey Data"], 1,
+              5
+              ],
+  
+    // Zoom 13
+              13, [
+              "case",
+              ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 1,
+              ["==", ["get", "Theme"], "Historic Environment Projects"], 1,
+              ["==", ["get", "Theme"], "Volunteer Survey Data"], 1,
+              5
+              ]
+              ],
             "text-color": [
               "match",
               ["get", "Theme"],
               ["NI Sites and Monuments Record"],
-              "hsl(196, 24%, 35%)",
+              "hsl(2, 65%, 39%)",
               ["Historic Environment Projects"],
-              "hsl(0, 57%, 61%)",
+              "hsl(107, 90%, 42%)",
               ["Volunteer Survey Data"],
-              "hsl(288, 32%, 51%)",
+              "hsl(175, 57%, 34%)",
               "#000000",
             ],
             "text-halo-width": [
