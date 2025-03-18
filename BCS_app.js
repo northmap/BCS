@@ -469,12 +469,56 @@ map.on("load", function () {
         geojsonData = data;
         // Add the the layer to the map
         map.addLayer({
-          id: "locationData",
+          id: "historic-environment-projects",
           type: "circle",
           source: {
             type: "geojson",
-            data: geojsonData,
+            data: {
+              "type": "FeatureCollection",
+              "features": geojsonData.features.filter(f => f.properties.Theme === "Historic Environment Projects")
+            }
           },
+          paint: {
+            "circle-radius": 14,
+            "circle-color": "hsl(0, 83%, 64%)"
+          }
+        });
+        
+        // Step 3: Add layer for "NI Sites and Monuments Record" (middle level)
+        map.addLayer({
+          id: "ni-sites-and-monuments-record",
+          type: "circle",
+          source: {
+            type: "geojson",
+            data: {
+              "type": "FeatureCollection",
+              "features": geojsonData.features.filter(f => f.properties.Theme === "NI Sites and Monuments Record")
+            }
+          },
+          paint: {
+            "circle-radius": 16,
+            "circle-color": "hsl(196, 58%, 61%)"
+          },
+          before: "historic-environment-projects" // Ensures this layer is above the previous one
+        });
+        
+        // Step 4: Add layer for "Volunteer Survey Data" (top level)
+        map.addLayer({
+          id: "volunteer-survey-data",
+          type: "circle",
+          source: {
+            type: "geojson",
+            data: {
+              "type": "FeatureCollection",
+              "features": geojsonData.features.filter(f => f.properties.Theme === "Volunteer Survey Data")
+            }
+          },
+          paint: {
+            "circle-radius": 18,
+            "circle-color": "hsl(288, 68%, 68%)"
+          },
+          before: "ni-sites-and-monuments-record" // Ensures this layer is above the previous one
+        });
           paint: {
             "circle-radius": [
             "interpolate",
