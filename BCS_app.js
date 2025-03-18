@@ -560,6 +560,86 @@ map.on("load", function () {
           before: "ni-sites-and-monuments-record" // Ensures this layer is above the previous one
         });
 
+        map.addLayer({
+          id: "text",
+          type: "symbol",
+          source: {
+            type: "geojson",
+            data: geojsonData,
+          },
+          layout: {
+            "text-field": "{Title/Name}",
+            "text-size": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12.5,
+              12,
+              15,
+              15,
+            ],
+            "text-offset": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12,
+              ["literal", [0.2, -0.5]],
+              14,
+              ["literal", [1, -1]]
+            ],
+            "text-justify": "center",
+            "text-padding": 0.5,
+            "text-anchor": "bottom-left",
+            "text-font": ["Brandon Text Medium", "Arial Unicode MS Regular"],
+          },
+          paint: {
+            "text-opacity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+    
+    // Zoom 12.5
+              12.5, [
+              "case",
+              ["==", ["get", "Theme"], "Historic Environment Projects"], 1,
+              ["==", ["get", "Theme"], "Volunteer Survey Data"], 1,
+              ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 0,
+              5
+              ],
+  
+    // Zoom 13
+              13, [
+              "case",
+              ["==", ["get", "Theme"], "Historic Environment Projects"], 1,
+              ["==", ["get", "Theme"], "Volunteer Survey Data"], 1,
+              ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 1,
+              5
+              ]
+              ],
+            "text-color": [
+              "match",
+              ["get", "Theme"],
+              ["NI Sites and Monuments Record"],
+              "hsl(2, 65%, 39%)",
+              ["Historic Environment Projects"],
+              "hsl(107, 80%, 24%)",
+              ["Volunteer Survey Data"],
+              "hsl(175, 57%, 34%)",
+              "#000000",
+            ],
+            "text-halo-width": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12.5,
+              1,
+              15,
+              2,
+            ],
+            "text-halo-color": "hsl(0, 100%, 99%)",
+            "text-halo-blur": 0.2,
+          },
+        });
       }
     );
 
@@ -598,7 +678,7 @@ exitButton.addEventListener("click", () => {
   modal.classList.add("hide-visually");
 });
 
-const title = document.getElementById("Title/Name");
+const title = document.getElementById("title");
 title.innerText = config.title;
 
 map.addControl(new mapboxgl.NavigationControl());
