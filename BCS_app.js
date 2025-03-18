@@ -495,7 +495,7 @@ map.on("load", function () {
             "case",
             ["==", ["get", "Theme"], "Historic Environment Projects"], 7,
             ["==", ["get", "Theme"], "Volunteer Survey Data"], 7,
-            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 5,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 3,
             5
             ]
             ], // size of circles
