@@ -484,30 +484,30 @@ map.on("load", function () {
   // Zoom 12
             12, [
             "case",
-            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 2.5,
             ["==", ["get", "Theme"], "Historic Environment Projects"], 5,
             ["==", ["get", "Theme"], "Volunteer Survey Data"], 5,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 2.5,
             5
             ],
 
   // Zoom 15.5
             14.5, [
             "case",
-            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 5,
             ["==", ["get", "Theme"], "Historic Environment Projects"], 7,
             ["==", ["get", "Theme"], "Volunteer Survey Data"], 7,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 5,
             5
             ]
             ], // size of circles
             "circle-color": [
               "match",
               ["get", "Theme"],
-              ["NI Sites and Monuments Record"],
-              "hsl(2, 63%, 49%)",
               ["Historic Environment Projects"],
               "hsl(107, 90%, 42%)",
               ["Volunteer Survey Data"],
               "hsl(167, 74%, 45%)",
+              ["NI Sites and Monuments Record"],
+              "hsl(2, 63%, 49%)",
               "#000000",
             ], // color of circles
             "circle-stroke-color": "hsl(298, 3%, 100%)",
@@ -566,18 +566,18 @@ map.on("load", function () {
     // Zoom 12.5
               12.5, [
               "case",
-              ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 0,
               ["==", ["get", "Theme"], "Historic Environment Projects"], 1,
               ["==", ["get", "Theme"], "Volunteer Survey Data"], 1,
+              ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 0,
               5
               ],
   
     // Zoom 13
               13, [
               "case",
-              ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 1,
               ["==", ["get", "Theme"], "Historic Environment Projects"], 1,
               ["==", ["get", "Theme"], "Volunteer Survey Data"], 1,
+              ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 1,
               5
               ]
               ],
