@@ -475,7 +475,6 @@ map.on("load", function () {
             type: "geojson",
             data: geojsonData,
           },
-          paint: {
             "circle-radius": [
                 "case",
                 ["==", ["get", "Theme"], "NI Sites and Monuments Record"],
@@ -489,7 +488,8 @@ map.on("load", function () {
                 
                 // Default radius value if no match
                 5  
-            ],            "circle-color": [
+            ],  // size of circles
+            "circle-color": [
               "match",
               ["get", "Theme"],
               ["NI Sites and Monuments Record"],
