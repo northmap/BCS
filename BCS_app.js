@@ -477,9 +477,8 @@ map.on("load", function () {
           },
           paint: {
             "circle-radius": [
-              "match",
-              ["get", "Theme"],
-              "NI Sites and Monuments Record", [
+              "case",
+              ["==", ["get", "Theme"], "NI Sites and Monuments Record"], [
                 "interpolate",
                 ["linear"],
                 ["zoom"],
@@ -488,7 +487,7 @@ map.on("load", function () {
                 15.5,
                 16
               ],
-              ["Historic Environment Projects"], [
+              ["==", ["get", "Theme"], "Historic Environment Projects"], [
                 "interpolate",
                 ["linear"],
                 ["zoom"],
@@ -497,7 +496,7 @@ map.on("load", function () {
                 15.5,
                 16
               ],
-              "Volunteer Survey Data", [
+              ["==", ["get", "Theme"], "Volunteer Survey Data"], [
                 "interpolate",
                 ["linear"],
                 ["zoom"],
