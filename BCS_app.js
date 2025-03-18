@@ -479,7 +479,7 @@ map.on("load", function () {
             "circle-radius": [
               "case",
               ["==", ["get", "Theme"], "NI Sites and Monuments Record"],
-              12,
+              ["interpolate", ["linear"], ["zoom"], 12, 10, 15.5, 16],
               ["==", ["get", "Theme"], "Historic Environment Projects"],
               14,
               ["==", ["get", "Theme"], "Volunteer Survey Data"],
