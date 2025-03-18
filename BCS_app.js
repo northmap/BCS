@@ -480,13 +480,13 @@ map.on("load", function () {
             "circle-radius": [
               "case",
               ["==", ["get", "Theme"], "NI Sites and Monuments Record"],
-              ["interpolate", ["linear"], ["zoom"], 12, 10, 15.5, 16],
+              ["interpolate", ["linear"], ["zoom"], 0, 10, 20, 16],
           
               ["==", ["get", "Theme"], "Historic Environment Projects"],
-              ["interpolate", ["linear"], ["zoom"], 12, 12, 15.5, 16],
+              ["interpolate", ["linear"], ["zoom"], 0, 10, 20, 16],
           
               ["==", ["get", "Theme"], "Volunteer Survey Data"],
-              ["interpolate", ["linear"], ["zoom"], 12, 12, 15.5, 18],
+              ["interpolate", ["linear"], ["zoom"], 0, 10, 20, 16],
           
               // Default radius if no match
               5
