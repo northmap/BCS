@@ -434,6 +434,7 @@ function sortByDistance(selectedPoint) {
 }
 
 map.on("load", function () {
+  // csv2geojson - following the Sheet Mapper tutorial https://www.mapbox.com/impact-tools/sheet-mapper
   console.log("loaded");
   $(document).ready(function () {
     console.log("ready");
@@ -464,9 +465,9 @@ map.on("load", function () {
         data.features.forEach(function (data, i) {
           data.properties.id = i;
         });
-
+  
         geojsonData = data;
-
+  
         // Add layer for "Historic Environment Projects" (lowest level)
         map.addLayer({
           id: "historic-environment-projects",
@@ -491,12 +492,12 @@ map.on("load", function () {
               "interpolate",
               ["linear"],
               ["zoom"],
-              12, 1, 14.5, 3,
+              12, 1.5, 15, 3,
             ],
             "circle-opacity": 1,
           }
         });
-
+  
         // Add layer for "NI Sites and Monuments Record" (middle level)
         map.addLayer({
           id: "ni-sites-and-monuments-record",
@@ -527,7 +528,7 @@ map.on("load", function () {
           },
           before: "historic-environment-projects" // Ensures this layer is above the previous one
         });
-
+  
         // Add layer for "Volunteer Survey Data" (top level)
         map.addLayer({
           id: "volunteer-survey-data",
@@ -559,13 +560,12 @@ map.on("load", function () {
           before: "ni-sites-and-monuments-record" // Ensures this layer is above the previous one
         });
 
-        // Add text layer with filtering to prevent duplicate labels
         map.addLayer({
           id: "text",
           type: "symbol",
           source: {
             type: "geojson",
-            data: geojsonData
+            data: geojsonData,
           },
           layout: {
             "text-field": "{Title/Name}",
@@ -573,15 +573,19 @@ map.on("load", function () {
               "interpolate",
               ["linear"],
               ["zoom"],
-              12.5, 12,
-              15, 15
+              12.5,
+              12,
+              15,
+              15,
             ],
             "text-offset": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              12, ["literal", [0.2, -0.5]],
-              14, ["literal", [1, -1]]
+              12,
+              ["literal", [0.2, -0.5]],
+              14,
+              ["literal", [1, -1]]
             ],
             "text-justify": "center",
             "text-padding": 0.5,
@@ -593,39 +597,48 @@ map.on("load", function () {
               "interpolate",
               ["linear"],
               ["zoom"],
+    
+    // Zoom 12.5
               12.5, [
-                "case",
-                ["==", ["get", "Theme"], "Historic Environment Projects"], 1,
-                ["==", ["get", "Theme"], "Volunteer Survey Data"], 1,
-                ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 0,
-                5
+              "case",
+              ["==", ["get", "Theme"], "Historic Environment Projects"], 1,
+              ["==", ["get", "Theme"], "Volunteer Survey Data"], 1,
+              ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 0,
+              5
               ],
+  
+    // Zoom 13
               13, [
-                "case",
-                ["==", ["get", "Theme"], "Historic Environment Projects"], 1,
-                ["==", ["get", "Theme"], "Volunteer Survey Data"], 1,
-                ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 1,
-                5
+              "case",
+              ["==", ["get", "Theme"], "Historic Environment Projects"], 1,
+              ["==", ["get", "Theme"], "Volunteer Survey Data"], 1,
+              ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 1,
+              5
               ]
-            ],
+              ],
             "text-color": [
               "match",
               ["get", "Theme"],
-              ["NI Sites and Monuments Record"], "hsl(2, 65%, 39%)",
-              ["Historic Environment Projects"], "hsl(107, 80%, 24%)",
-              ["Volunteer Survey Data"], "hsl(175, 57%, 34%)",
-              "#000000"
+              ["NI Sites and Monuments Record"],
+              "hsl(2, 65%, 39%)",
+              ["Historic Environment Projects"],
+              "hsl(107, 80%, 24%)",
+              ["Volunteer Survey Data"],
+              "hsl(175, 57%, 34%)",
+              "#000000",
             ],
             "text-halo-width": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              12.5, 1,
-              15, 2
+              12.5,
+              1,
+              15,
+              2,
             ],
             "text-halo-color": "hsl(0, 100%, 99%)",
-            "text-halo-blur": 0.2
-          }
+            "text-halo-blur": 0.2,
+          },
         });
       }
     );
