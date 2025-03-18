@@ -470,95 +470,32 @@ map.on("load", function () {
   
         // Add layer for "Historic Environment Projects" (lowest level)
         map.addLayer({
-          id: "historic-environment-projects",
+          id: "locationData",
           type: "circle",
           source: {
             type: "geojson",
-            data: {
-              "type": "FeatureCollection",
-              "features": geojsonData.features.filter(f => f.properties.Theme === "Historic Environment Projects")
-            }
+            data: geojsonData,
           },
           paint: {
             "circle-radius": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              12, 5, 15.5, 7
-            ],
-            "circle-color": "hsl(107, 90%, 42%)",
-            "circle-stroke-color": "hsl(298, 3%, 100%)",
-            "circle-stroke-width": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              12, 1.5, 15, 3,
-            ],
-            "circle-opacity": 1,
-          }
-        });
-  
-        // Add layer for "NI Sites and Monuments Record" (middle level)
-        map.addLayer({
-          id: "ni-sites-and-monuments-record",
-          type: "circle",
-          source: {
-            type: "geojson",
-            data: {
-              "type": "FeatureCollection",
-              "features": geojsonData.features.filter(f => f.properties.Theme === "NI Sites and Monuments Record")
-            }
-          },
-          paint: {
-            "circle-radius": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              12, 2.5, 15.5, 5
-            ],
-            "circle-color": "hsl(2, 63%, 49%)",
-            "circle-stroke-color": "hsl(298, 3%, 100%)",
-            "circle-stroke-width": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              12, 1, 15, 1.5,
-            ],
-            "circle-opacity": 1,
-          },
-          before: "historic-environment-projects" // Ensures this layer is above the previous one
-        });
-  
-        // Add layer for "Volunteer Survey Data" (top level)
-        map.addLayer({
-          id: "volunteer-survey-data",
-          type: "circle",
-          source: {
-            type: "geojson",
-            data: {
-              "type": "FeatureCollection",
-              "features": geojsonData.features.filter(f => f.properties.Theme === "Volunteer Survey Data")
-            }
-          },
-          paint: {
-            "circle-radius": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              12, 5, 15.5, 7
-            ],
-            "circle-color": "hsl(167, 74%, 45%)",
-            "circle-stroke-color": "hsl(298, 3%, 100%)",
-            "circle-stroke-width": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              12, 2, 14.5, 5,
-            ],
-            "circle-opacity": 1,
-          },
-          before: "ni-sites-and-monuments-record" // Ensures this layer is above the previous one
-        });
+              12.5,
+              3,
+              15,
+              6.5,
+            ], // size of circles
+            "circle-color": [
+              "match",
+              ["get", "Theme"],
+              ["Historic Environment Projects"],
+              "hsl(196, 58%, 61%)",
+              ["Volunteer Survey Data"],
+              "hsl(0, 83%, 64%)",
+              ["NI Sites and Monuments Record"],
+              "hsl(288, 68%, 68%)",
+              "#000000",
 
         map.addLayer({
           id: "text",
