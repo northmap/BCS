@@ -587,7 +587,7 @@ map.on("load", function () {
               ["NI Sites and Monuments Record"],
               "hsl(2, 65%, 39%)",
               ["Historic Environment Projects"],
-              "hsl(107, 90%, 42%)",
+              "hsl(107, 80%, 24%)",
               ["Volunteer Survey Data"],
               "hsl(175, 57%, 34%)",
               "#000000",
