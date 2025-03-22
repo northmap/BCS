@@ -520,7 +520,7 @@ map.on("load", function () {
             "case",
             ["==", ["get", "Theme"], "Historic Environment Projects"], 2,
             ["==", ["get", "Theme"], "Volunteer Survey Data"], 2,
-            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 2,
+            ["==", ["get", "Theme"], "NI Sites and Monuments Record"], 1,
             5
             ],
 
