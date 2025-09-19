@@ -47,9 +47,11 @@ function createPopup(currentFeature) {
         "<h2>" +
         currentFeature.properties.Description +
         "</h2>" +
-        "<h4>" +
+        "<h4><a href='" +
         currentFeature.properties.Link_URL +
-        "</h4>"
+        "' target='_blank' rel='noopener noreferrer'>" +
+        currentFeature.properties.Link_URL +
+        "</a></h4>"
     )
     .addTo(map);
 
